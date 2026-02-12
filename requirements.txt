@@ -1,12 +1,7 @@
 streamlit
 python-dotenv
-google-generativeai
+google-genai
 pdf2image
 pytesseract
 pdfplumber
 mysql-connector-python
-
-
-
-
-
