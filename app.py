@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 from pdf2image import convert_from_path
 import pytesseract
 import pdfplumber
@@ -12,7 +12,8 @@ from mysql.connector import Error
 load_dotenv()
 
 # Configure Google Gemini AI
-genai.configure(api_key="AIzaSyA7UtgL54qVonDQ38_YAJbsz1qd8BV0ESA")  # Replace with your actual API key
+# Replace with your actual API key
+client = genai.Client(api_key="AIzaSyACvEenYfOmQGULQhlkNLh4e4iNO1hSHd8")
 
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_path):
@@ -85,8 +86,6 @@ def analyze_resume(resume_text, job_description=None):
     if not resume_text:
         return {"error": "Resume text is required for analysis."}
     
-    model = genai.GenerativeModel("gemini-1.5-pro")
-    
     # Updated base_prompt with strict format instructions
     base_prompt = f"""
     **You MUST follow this format:**
@@ -104,7 +103,10 @@ def analyze_resume(resume_text, job_description=None):
     {job_description if job_description else "N/A"}
     """
 
-    response = model.generate_content(base_prompt)
+    response = client.models.generate_content(
+        model="gemini-2.5-pro",
+        contents=base_prompt
+    )
 
     # Extract structured data from the response
     analysis = response.text.strip()
