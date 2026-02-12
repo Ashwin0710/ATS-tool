@@ -1,0 +1,12 @@
+streamlit
+python-dotenv
+google-generativeai
+pdf2image
+pytesseract
+pdfplumber
+mysql-connector-python
+
+
+
+
+
