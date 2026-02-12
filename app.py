@@ -85,7 +85,7 @@ def analyze_resume(resume_text, job_description=None):
     if not resume_text:
         return {"error": "Resume text is required for analysis."}
     
-    model = genai.GenerativeModel("gemini-2.0-flash-thinking-exp-01-21")
+    model = genai.GenerativeModel("gemini-1.5-pro")
     
     # Updated base_prompt with strict format instructions
     base_prompt = f"""
