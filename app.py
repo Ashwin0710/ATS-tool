@@ -13,7 +13,7 @@ load_dotenv()
 
 # Configure Google Gemini AI
 # Replace with your actual API key
-client = genai.Client(api_key="AIzaSyAOAmY5iWHc6HlOhmSdRgJcn_FChatDL3g")
+client = genai.Client(api_key="AIzaSyDqB3CcQMst70Vc-szMkLreglkjfapPymc")
 
 # Function to extract text from PDF
 def extract_text_from_pdf(pdf_path):
